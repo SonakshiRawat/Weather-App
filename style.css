@@ -13,7 +13,7 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 7px;
 }
 
 /* Track */
@@ -24,13 +24,13 @@ body {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: black; 
+  background: grey; 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: black; 
+  background: grey; 
 }
 .container {
   background-color: #100e1d;
@@ -42,7 +42,8 @@ body {
 
 .section1 {
   position: absolute;
-  width: 30%;
+  /* width: 30%; */
+  width: 30vw;
   height: 100%;
   left: 0px;
   top: 0px;
@@ -59,7 +60,7 @@ body {
   opacity: 0.1;
   position: absolute;
   width: 580px;
-  top: 9%;
+  top: 15%;
   /* left: -5%; */
 }
 .temp {
@@ -262,7 +263,7 @@ input::placeholder {
   padding: 7px 9px;
   font-size: 18px;
   opacity: 0.3;
-  font-weight: 700;
+  /* font-weight: 700; */
   cursor: pointer;
 
 
@@ -341,7 +342,7 @@ input::placeholder {
 .box{
   background: #1e213a;
   width: 370px;
-  height: 145px;
+  height: 130px;
 margin: 3px 10px;
   text-align: center;
   padding: 10px;
@@ -483,6 +484,7 @@ input {
 
   .block{
     width: 100px;
+    height: 180px;
 }
 
 input {
@@ -547,7 +549,8 @@ input {
     width:0%;
   }
   .section1 {
-    width: 100%;
+    /* width: 100%; */
+    width: 100vw;
     height: 100%;
     left: 0px;
     top: 0px;

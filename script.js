@@ -37,6 +37,7 @@ let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 //Event Listners
 btn.addEventListener("click", initial);
 
+
 //Functions
 function closeNav() {
   sidenav.style.width = "0px";
@@ -44,9 +45,9 @@ function closeNav() {
 
 function openNav() {
   if(window.innerWidth<=815)
-  sidenav.style.width = "100%";
+  sidenav.style.width = "100vw";
   else
-  sidenav.style.width = "30%";
+  sidenav.style.width = "30vw";
 
 }
 
@@ -55,40 +56,40 @@ async function getLocation(place) {
     `https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=c80431e7f167a32dc305872403d7a779`
   );
   const data = await response.json();
+  // if(data.cod==='404') throw new Error(`${data.message}`);
+  console.log(data);
   return data;
 }
 initial();
 
 async function initial() {
-  
+  try{
   const val = input.value?input.value:'Dehradun';
  const  data=await getLocation(val);
+ if(data.cod==='404') throw new Error(`${data.message}`);
   
   closeNav();
   change(data);
   displayDay();
   fiveDays(data);
-  // document.querySelectorAll('.added').forEach(n=>{
-  //   console.log(n.children[0].innerText)
-  //   if(n.children[0].innerText===input.value) return;
-  //   else afterSearch(data);
-  // });
   afterSearch(data);
-  
   switchTemp(data);
   input.value = "";
+  }catch(err){
+  alert(err)
+  input.value = "";
+  closeNav();
+  }
 }
 async function init(place) {
   console.log(place);
     const val = input.value?input.value:'Dehradun'; 
    const data=await getLocation(place);
 
-
   closeNav();
   change(data);
   displayDay();
   fiveDays(data);
-  afterSearch(data);
   switchTemp(data);
   input.value = "";
 }
@@ -104,6 +105,7 @@ async function afterSearch(data) {
   document.querySelectorAll('.added').forEach((n)=>n.addEventListener('click',function(){
     console.log(n.children[0].innerText);
 init(n.children[0].innerText)
+    
   }))
 }
 async function change(data) {
